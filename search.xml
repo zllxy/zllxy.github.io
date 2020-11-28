@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>GoLang中的浮点型</title>
+      <link href="2020/11/28/goland-float/"/>
+      <url>2020/11/28/goland-float/</url>
+      
+        <content type="html"><![CDATA[<h2 id="GoLang浮点数"><a href="#GoLang浮点数" class="headerlink" title="GoLang浮点数"></a>GoLang浮点数</h2><ul><li><p>Go语言中主要有两个类型来表示浮点数：</p><p>  <code>float32</code>，单精度浮点数，可以精确到小数点后 7 位<br>  <code>float64</code>，双精度浮点数，可以精确到小数点后 15 位</p></li><li><p>在代码中使用：</p><p>  通过<code>var</code>关键字直接声明</p>  <pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">var</span> f <span class="token builtin">float32</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>  通过变量自动推导，其类型将被自动设置为 <code>float64</code>。实际开发中，尽量使用<code>float64</code>，因为Go语言很多函数的参数要求传入这个类型，比如<code>math</code>中有关数学运算的函数。</p>  <pre class="line-numbers language-go" data-language="go"><code class="language-go">f1 <span class="token operator">:=</span> <span class="token number">1.0</span>fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>fmt<span class="token punctuation">.</span><span class="token function">Sprintf</span><span class="token punctuation">(</span><span class="token string">"%T"</span><span class="token punctuation">,</span> f1<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token comment">//float64</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>  <code>float32</code> 与 <code>float64</code> 相互转换</p>  <pre class="line-numbers language-go" data-language="go"><code class="language-go"><span class="token keyword">var</span> f <span class="token builtin">float32</span><span class="token keyword">var</span> f1 <span class="token builtin">float64</span>f <span class="token operator">=</span> <span class="token number">10.01</span>f1 <span class="token operator">=</span> <span class="token function">float64</span><span class="token punctuation">(</span>f<span class="token punctuation">)</span>f <span class="token operator">=</span> <span class="token function">float32</span><span class="token punctuation">(</span>f1<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>  ​    </p></li></ul><h2 id="浮点数之间的比较"><a href="#浮点数之间的比较" class="headerlink" title="浮点数之间的比较"></a>浮点数之间的比较</h2><ul><li><p>由于计算机底层将十进制的浮点数转化为二进制表示时，会丢失精度，所以不要认为浮点数可以精确到了最后一位，也不要比较两个浮点数是否相等，比如：</p>  <pre class="line-numbers language-go" data-language="go"><code class="language-go">f1 <span class="token operator">:=</span> <span class="token number">0.1</span>f2 <span class="token operator">:=</span> <span class="token number">0.7</span>f3 <span class="token operator">:=</span> f1 <span class="token operator">+</span> f2fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>f3 <span class="token operator">==</span> <span class="token number">0.8</span><span class="token punctuation">)</span>   <span class="token comment">//false</span>fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span>f3<span class="token punctuation">)</span>     <span class="token comment">//0.7999999999999999</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre></li></ul><ul><li><p>如果一定要比较两个浮点数是否相等，通常可以设置一个最小误差值 <code>p</code>，如果两个浮点数的差值在此精度的误差范围之内，则判定这两个浮点数相等。借助 <code>math.Dim</code> 可以实现</p>  <pre class="line-numbers language-go" data-language="go"><code class="language-go">p <span class="token operator">:=</span> <span class="token number">0.0001</span><span class="token keyword">if</span> math<span class="token punctuation">.</span><span class="token function">Dim</span><span class="token punctuation">(</span>f1<span class="token punctuation">,</span> f2<span class="token punctuation">)</span> <span class="token operator">&lt;</span> p <span class="token punctuation">&#123;</span>    fmt<span class="token punctuation">.</span><span class="token function">Println</span><span class="token punctuation">(</span><span class="token string">"f1 和 f2 相等"</span><span class="token punctuation">)</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> GoLang学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> GoLang </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo + GitHub Pages搭建个人网站</title>
       <link href="2020/11/27/hello-world/"/>
       <url>2020/11/27/hello-world/</url>
@@ -13,14 +38,14 @@
       
       <categories>
           
-          <category> blog </category>
+          <category> BLOG </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> hexo </tag>
+            <tag> Hexo </tag>
             
         </tags>
       
